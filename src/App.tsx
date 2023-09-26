@@ -70,9 +70,13 @@ function App() {
 
   const initiateOAuth = () => {
     const state = Math.random().toString(36).substring(7);
+    console.log(state, 'state');
+    
     Cookies.set("oauth_state", state, { secure: true, sameSite: "none" });
 
     const { clientId, redirectUri, scopes } = oauthConfig;
+    console.log(clientId, redirectUri, scopes);
+    
     const authorizationUrl = `${
       oauthConfig.authorizationUrl
     }?client_id=${clientId}&redirect_uri=${encodeURIComponent(
@@ -103,7 +107,7 @@ function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Router>
         <div className="App">
-          <h1>OAuth 2.0 Authentication Example</h1>
+          <h1>OAuth 2.0  </h1>
           <Routes>
             <Route path="/auth-callback" element={<OAuthCallback />} />
             <Route path="/protected-route">
